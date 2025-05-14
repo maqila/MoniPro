@@ -17,10 +17,14 @@ class CollaborationController extends Controller
         //
         $month = $request->month;
         $year = $request->year;
+        $searchCustomer = $request->customer;
+        $searchKode = $request->kode;
 
         $collaborations = Collaboration::with('customer')
             ->when($month, fn($q) => $q->whereMonth('tanggal', $month))
             ->when($year, fn($q) => $q->whereYear('tanggal', $year))
+            ->when($searchCustomer, fn($q) => $q->whereHas('customer', fn($c) => $c->where('nama', 'like', '%' . $searchCustomer . '%')))
+            ->when($searchKode, fn($q) => $q->where('kode', 'like', '%' . $searchKode . '%'))
             ->orderBy('tanggal', 'desc')
             ->get();
 

@@ -12,34 +12,53 @@
                         </ul>
                     </div>
                 @endif
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h4 class="card-title">Collaboration</h4>
-                    <form method="GET" action="{{ route('collaboration.index') }}"
-                        class="d-flex align-items-center gap-2 mb-3 px-3">
-                        <select name="month" class="form-select form-select-sm w-auto">
-                            <option value="">Semua Bulan</option>
-                            @foreach (range(1, 12) as $m)
-                                <option value="{{ $m }}" {{ request('month') == $m ? 'selected' : '' }}>
-                                    {{ \Carbon\Carbon::create()->month($m)->translatedFormat('F') }}
-                                </option>
-                            @endforeach
-                        </select>
+                <div class="card-header">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                        <h4 class="card-title mb-0">Collaboration</h4>
 
-                        <select name="year" class="form-select form-select-sm w-auto">
-                            <option value="">Semua Tahun</option>
-                            @foreach (range(now()->year, now()->year - 10) as $y)
-                                <option value="{{ $y }}" {{ request('year') == $y ? 'selected' : '' }}>
-                                    {{ $y }}</option>
-                            @endforeach
-                        </select>
+                        <form method="GET" action="{{ route('collaboration.index') }}"
+                            class="d-flex flex-wrap gap-2 align-items-center">
+                            <input type="text" name="customer"
+                                class="form-control form-control-sm rounded-pill shadow-sm px-3"
+                                placeholder="Cari Customer" value="{{ request('customer') }}">
 
-                        <button type="submit" class="btn btn-outline-primary btn-sm">Terapkan</button>
-                        @role(2, 3)
-                            <a href="{{ route('collaboration.exportPdf', ['month' => request('month'), 'year' => request('year')]) }}"
-                                class="btn btn-outline-danger btn-sm" target="_blank">Export PDF</a>
-                        @endrole
-                    </form>
+                            <input type="text" name="kode"
+                                class="form-control form-control-sm rounded-pill shadow-sm px-3" placeholder="Cari Kode"
+                                value="{{ request('kode') }}">
+
+                            <select name="month"
+                                class="form-select form-select-sm rounded-pill shadow-sm w-auto px-3">
+                                <option value="">Semua Bulan</option>
+                                @foreach (range(1, 12) as $m)
+                                    <option value="{{ $m }}" {{ request('month') == $m ? 'selected' : '' }}>
+                                        {{ \Carbon\Carbon::create()->month($m)->translatedFormat('F') }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            <select name="year"
+                                class="form-select form-select-sm rounded-pill shadow-sm w-auto px-3">
+                                <option value="">Semua Tahun</option>
+                                @foreach (range(now()->year, now()->year - 10) as $y)
+                                    <option value="{{ $y }}" {{ request('year') == $y ? 'selected' : '' }}>
+                                        {{ $y }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            <button type="submit"
+                                class="btn btn-sm btn-outline-primary rounded-pill px-4 shadow-sm">Terapkan</button>
+
+                            @role(2, 3)
+                                <a href="{{ route('collaboration.exportPdf', ['month' => request('month'), 'year' => request('year')]) }}"
+                                    class="btn btn-sm btn-outline-danger rounded-pill px-4 shadow-sm" target="_blank">
+                                    Export PDF
+                                </a>
+                            @endrole
+                        </form>
+                    </div>
                 </div>
+
                 <div class="card-content">
                     <!-- Table for displaying collaborations -->
                     <div class="table-responsive">

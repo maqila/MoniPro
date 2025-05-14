@@ -4,6 +4,21 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title">Customer</h4>
+                    <form method="GET" action="{{ route('customer.index') }}" class="d-flex gap-2 px-3 py-2">
+                        <input type="text" name="search_name" value="{{ request('search_name') }}"
+                            class="form-control form-control-sm" placeholder="Cari Nama">
+                        <select name="search_jenis" class="form-select form-select-sm w-auto">
+                            <option value="">Semua Jenis Customer</option>
+                            <option value="owner" {{ request('search_jenis') == 'owner' ? 'selected' : '' }}>Owner
+                            </option>
+                            <option value="contractor" {{ request('search_jenis') == 'contractor' ? 'selected' : '' }}>
+                                Contractor</option>
+                            <option value="consultant" {{ request('search_jenis') == 'consultant' ? 'selected' : '' }}>
+                                Consultant</option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-primary rounded-pill">Cari</button>
+                    </form>
+
                     @role(1, 3)
                         <button class="btn btn-primary rounded-pill" data-bs-toggle="modal"
                             data-bs-target="#createCustomerModal">Add Customer</button>

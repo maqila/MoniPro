@@ -62,10 +62,10 @@
                                 </select>
                             </div>
                             <div class="col-md-3 d-flex gap-2">
-                                <button class="btn btn-outline-primary" type="submit">Filter</button>
+                                <button class="btn btn-outline-primary rounded-pill" type="submit">Filter</button>
                                 @role(2, 3)
                                     <a href="{{ route('customer.printFiltered', ['id' => $customer->id, 'month' => request('month'), 'year' => request('year')]) }}"
-                                        class="btn btn-outline-danger" target="_blank">Export PDF</a>
+                                        class="btn btn-outline-danger rounded-pill" target="_blank">Export PDF</a>
                                 @endrole
                             </div>
                         </form>

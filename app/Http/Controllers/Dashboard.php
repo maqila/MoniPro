@@ -14,9 +14,6 @@ class Dashboard extends Controller
     public function index()
     {
 
-        // $customerCount = Customer::count();
-        // $timelineCount = Timeline::count();
-
         // Top 3 timelines with shortest deadlines
         $topTimelines = Timeline::all()->filter(function ($timeline) {
             return $timeline->deadline !== 'Done';

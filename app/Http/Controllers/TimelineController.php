@@ -16,6 +16,10 @@ class TimelineController extends Controller
     {
         $query = Timeline::query();
 
+        if ($request->filled('search_name')) {
+            $query->where('nama', 'like', '%' . $request->search_name . '%');
+        }
+
         if ($request->filled('month')) {
             $query->whereMonth('tanggal', $request->month);
         }

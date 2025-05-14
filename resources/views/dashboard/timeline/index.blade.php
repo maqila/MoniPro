@@ -35,15 +35,20 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="col-md-3">
+                                <label for="search_name" class="form-label">Cari Nama</label>
+                                <input type="text" class="form-control" id="search_name" name="search_name"
+                                    value="{{ request('search_name') }}" placeholder="Masukkan nama...">
+                            </div>
                             <div class="col-md-3 d-flex gap-2">
-                                <button type="submit" class="btn btn-outline-primary mt-4">Filter</button>
+                                <button type="submit" class="btn btn-outline-primary rounded-pill">Filter</button>
 
                                 @role(2, 3)
                                     <a href="{{ route('timeline.print', ['month' => request('month'), 'year' => request('year')]) }}"
-                                        target="_blank" class="btn btn-outline-success mt-4">Cetak</a>
+                                        target="_blank" class="btn btn-outline-success rounded-pill">Cetak</a>
 
                                     <a href="{{ route('timeline.exportPdf', ['month' => request('month'), 'year' => request('year')]) }}"
-                                        target="_blank" class="btn btn-outline-danger mt-4">Export PDF</a>
+                                        target="_blank" class="btn btn-outline-danger rounded-pill">Export PDF</a>
                                 @endrole
                             </div>
                         </form>
@@ -205,7 +210,8 @@
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="createTimelineModalLabel">Tambah Data Timeline</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="row">

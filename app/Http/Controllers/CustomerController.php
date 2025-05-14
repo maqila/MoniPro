@@ -12,10 +12,17 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $customers = Customer::with('collaborations')->get();
+        $customers = Customer::with('collaborations')
+            ->when($request->search_name, function ($query, $searchName) {
+                $query->where('nama', 'like', '%' . $searchName . '%');
+            })
+            ->when($request->search_jenis, function ($query, $searchJenis) {
+                $query->where('jenis_customer', $searchJenis);
+            })
+            ->get();
         return view('dashboard.customer.index', compact('customers'));
     }
 
