@@ -35,13 +35,13 @@ class Collaboration extends Model
     // Method to calculate and return the status
     public function calculateStatus()
     {
-        $score = ($this->kepatuhan_pembayaran * 0.25) +
-            ($this->komitmen_kontrak * 0.25) +
-            ($this->respon_komunikasi * 0.25) +
-            ($this->pengambilan_keputusan * 0.25);
+        $score = ($this->kepatuhan_pembayaran * 0.5) +
+            ($this->komitmen_kontrak * 0.2) +
+            ($this->respon_komunikasi * 0.15) +
+            ($this->pengambilan_keputusan * 0.15);
 
         if ($score > 3) {
-            return 'Sangat Baik';
+            return 'Baik Sekali';
         } elseif ($score > 2) {
             return 'Baik';
         } elseif ($score > 1) {
@@ -62,10 +62,10 @@ class Collaboration extends Model
     public function getKepatuhanPembayaranTextAttribute()
     {
         $options = [
-            4 => 'Tepat Waktu',
-            3 => 'Terlambat 2 Minggu',
-            2 => 'Terlambat > 2 Minggu',
-            1 => 'Terlambat > 1 Bulan / Tidak Membayar',
+            4 => 'Terlambat < 14 Hari / Tepat Waktu',
+            3 => 'Terlambat 15 s/d 30 Hari',
+            2 => 'Terlambat 30 s/d 60 Hari',
+            1 => 'Terlambat > 60 Hari',
         ];
         return $options[$this->kepatuhan_pembayaran] ?? 'Unknown';
     }
@@ -73,10 +73,10 @@ class Collaboration extends Model
     public function getKomitmenKontrakTextAttribute()
     {
         $options = [
-            4 => 'Taat Pada Kontrak',
-            3 => 'Beberapa Perubahan Kecil',
-            2 => 'Beberapa Perubahan Besar',
-            1 => 'Perubahan Mendadak / Tidak Mengikuti Kontrak',
+            4 => '> 100M',
+            3 => '5M - 100M',
+            2 => '1M - 5M',
+            1 => '< 1M',
         ];
         return $options[$this->komitmen_kontrak] ?? 'Unknown';
     }
@@ -85,9 +85,9 @@ class Collaboration extends Model
     {
         $options = [
             4 => 'Cepat',
-            3 => 'Cukup Baik',
+            3 => 'Cukup Cepat',
             2 => 'Lambat',
-            1 => 'Sangat Lambat',
+            1 => 'Lambat Sekali',
         ];
         return $options[$this->respon_komunikasi] ?? 'Unknown';
     }
@@ -95,10 +95,10 @@ class Collaboration extends Model
     public function getPengambilanKeputusanTextAttribute()
     {
         $options = [
-            4 => 'Cepat dan Tepat',
-            3 => 'Cukup Cepat',
-            2 => 'Lambat',
-            1 => 'Sangat Lambat',
+            4 => '< 14 Hari',
+            3 => '14 s/d 30 Hari',
+            2 => '30 s/d 45 Hari',
+            1 => '> 90 Hari',
         ];
         return $options[$this->pengambilan_keputusan] ?? 'Unknown';
     }
@@ -106,7 +106,7 @@ class Collaboration extends Model
     public function getStatusScoreAttribute()
     {
         switch ($this->status) {
-            case 'Sangat Baik':
+            case 'Baik Sekali':
                 return 4;
             case 'Baik':
                 return 3;

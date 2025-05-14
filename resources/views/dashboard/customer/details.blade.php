@@ -84,9 +84,9 @@
                                     <th>Contact</th>
                                     <th>Tanggal</th>
                                     <th>Kepatuhan Pembayaran</th>
-                                    <th>Komitmen Kontrak</th>
+                                    <th>Nilai Total Pesanan</th>
                                     <th>Respon Komunikasi</th>
-                                    <th>Pengambilan Keputusan</th>
+                                    <th>Jangka Waktu Pembayaran Pada Kontrak</th>
                                     <th>Status</th>
                                     <th>Dokumen</th>
                                     @role(1, 3)
@@ -195,12 +195,13 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="komitmen_kontrak" class="form-label">Komitmen Pada Kontrak</label>
+                                <label for="komitmen_kontrak" class="form-label">Nilai Total Pesanan</label>
                                 <select name="komitmen_kontrak" id="komitmen_kontrak" class="form-control" required>
-                                    <option value="4">Taat Pada Kontrak</option>
-                                    <option value="3">Beberapa Perubahan Kecil</option>
-                                    <option value="2">Beberapa Perubahan Besar</option>
-                                    <option value="1">Perubahan Mendadak / Tidak Mengikuti Kontrak</option>
+                                    <option value="4">> 100M</option>
+                                    <option value="3">5M - 100M</option>
+                                    <option value="2">1M - 5M</option>
+                                    <option value="1">
+                                        < 1M</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
@@ -214,13 +215,15 @@
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="pengambilan_keputusan" class="form-label">Pengambilan Keputusan</label>
+                                <label for="pengambilan_keputusan" class="form-label">Jangka Waktu Pembayaran Pada
+                                    Kontrak</label>
                                 <select name="pengambilan_keputusan" id="pengambilan_keputusan" class="form-control"
                                     required>
-                                    <option value="4">Cepat dan Tepat</option>
-                                    <option value="3">Cukup Cepat</option>
-                                    <option value="2">Lambat</option>
-                                    <option value="1">Sangat Lambat</option>
+                                    <option value="4">
+                                        < 14 Hari</option>
+                                    <option value="3">14 s/d 30 Hari</option>
+                                    <option value="2">30 s/d 45 Hari</option>
+                                    <option value="1">> 90 Hari</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">

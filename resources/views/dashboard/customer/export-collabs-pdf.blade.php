@@ -74,9 +74,9 @@
                 <th>Contact</th>
                 <th>Tanggal</th>
                 <th>Kepatuhan Pembayaran</th>
-                <th>Komitmen Kontrak</th>
+                <th>Nilai Total Pembayaran</th>
                 <th>Respon Komunikasi</th>
-                <th>Pengambilan Keputusan</th>
+                <th>Jangka Waktu Pembayaran Pada Kontrak</th>
                 <th>Dokumen</th>
                 <th>PIC SE</th>
             </tr>

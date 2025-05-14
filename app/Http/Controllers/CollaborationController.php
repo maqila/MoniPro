@@ -60,12 +60,12 @@ class CollaborationController extends Controller
         $data = $request->all();
 
         // Calculate the collaboration status based on average score
-        $averageScore = ($request->kepatuhan_pembayaran + $request->komitmen_kontrak + $request->respon_komunikasi + $request->pengambilan_keputusan) / 4;
+        $averageScore = ($request->kepatuhan_pembayaran * 0.5) + ($request->komitmen_kontrak * 0.2) + ($request->respon_komunikasi * 0.15) + ($request->pengambilan_keputusan * 0.15);
 
 
         // Determine the status based on average score
         if ($averageScore > 3) {
-            $data['status'] = 'Sangat Baik';
+            $data['status'] = 'Baik Sekali';
         } elseif ($averageScore > 2) {
             $data['status'] = 'Baik';
         } elseif ($averageScore > 1) {
@@ -126,11 +126,11 @@ class CollaborationController extends Controller
         $data = $request->all();
 
         // Calculate the collaboration status based on average score
-        $averageScore = ($request->kepatuhan_pembayaran + $request->komitmen_kontrak + $request->respon_komunikasi + $request->pengambilan_keputusan) / 4;
+        $averageScore = ($request->kepatuhan_pembayaran * 0.5) + ($request->komitmen_kontrak * 0.2) + ($request->respon_komunikasi * 0.15) + ($request->pengambilan_keputusan * 0.15);
 
         // Determine the status based on average score
         if ($averageScore > 3) {
-            $data['status'] = 'Sangat Baik';
+            $data['status'] = 'Baik Sekali';
         } elseif ($averageScore > 2) {
             $data['status'] = 'Baik';
         } elseif ($averageScore > 1) {

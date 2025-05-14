@@ -52,7 +52,7 @@ class Customer extends Model
 
         // Tentukan status berdasarkan nilai rata-rata skor
         if ($averageScore > 3) {
-            return 'Sangat Baik';
+            return 'Baik Sekali';
         } elseif ($averageScore >= 2 && $averageScore <= 3) {
             return 'Baik';
         } elseif ($averageScore >= 1 && $averageScore < 2) {

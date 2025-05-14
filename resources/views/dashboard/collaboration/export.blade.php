@@ -55,10 +55,10 @@
                 <th>Jabatan</th>
                 <th>Contact</th>
                 <th>Tanggal</th>
-                <th>Kepatuhan</th>
-                <th>Kontrak</th>
-                <th>Respon</th>
-                <th>Keputusan</th>
+                <th>Kepatuhan Pembayaran</th>
+                <th>Nilai Total Pembayaran</th>
+                <th>Respon Komunikasi</th>
+                <th>Jangka Waktu Pembayaran Pada Kontrak</th>
                 <th>Status</th>
                 <th>PIC SE</th>
             </tr>
