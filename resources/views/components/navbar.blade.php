@@ -66,7 +66,7 @@
                         </a>
                     </li>
 
-                    @if (in_array($role, [1, 2, 3]))
+                    @if (in_array($role, [1, 2]))
                         <li class="sidebar-item {{ request()->is('timeline') ? 'active' : '' }}">
                             <a href="/timeline" class='sidebar-link'>
                                 <i class="bi bi-calendar-event"></i>

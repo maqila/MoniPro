@@ -4,8 +4,10 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title">Customer</h4>
-                    <button class="btn btn-primary rounded-pill" data-bs-toggle="modal"
-                        data-bs-target="#createCustomerModal">Add Customer</button>
+                    @role(1, 3)
+                        <button class="btn btn-primary rounded-pill" data-bs-toggle="modal"
+                            data-bs-target="#createCustomerModal">Add Customer</button>
+                    @endrole
                 </div>
                 <div class="card-content">
                     <!-- table hover -->
@@ -47,22 +49,24 @@
                                             <a href="{{ route('customer.details', $customer->id) }}" title="Detail">
                                                 <i data-feather="eye" class="text-info"></i>
                                             </a>
-                                            <!-- Edit Icon -->
-                                            <a href="javascript:void(0);"
-                                                onclick="openEditCustomerModal({{ $customer }})" title="Edit">
-                                                <i data-feather="edit" class="text-primary"></i>
-                                            </a>
-                                            <!-- Delete Icon -->
-                                            <form action="{{ route('customer.destroy', $customer) }}" method="POST"
-                                                style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you sure?')"
-                                                    title="Delete"
-                                                    style="border:none; background:none; cursor:pointer;">
-                                                    <i data-feather="trash-2" class="text-danger"></i>
-                                                </button>
-                                            </form>
+                                            @role(1, 3)
+                                                <!-- Edit Icon -->
+                                                <a href="javascript:void(0);"
+                                                    onclick="openEditCustomerModal({{ $customer }})" title="Edit">
+                                                    <i data-feather="edit" class="text-primary"></i>
+                                                </a>
+                                                <!-- Delete Icon -->
+                                                <form action="{{ route('customer.destroy', $customer) }}" method="POST"
+                                                    style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" onclick="return confirm('Are you sure?')"
+                                                        title="Delete"
+                                                        style="border:none; background:none; cursor:pointer;">
+                                                        <i data-feather="trash-2" class="text-danger"></i>
+                                                    </button>
+                                                </form>
+                                            @endrole
                                         </td>
                                     </tr>
                                 @endforeach

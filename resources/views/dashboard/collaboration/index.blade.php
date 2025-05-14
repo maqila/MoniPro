@@ -60,7 +60,9 @@
                                     <th>Status</th>
                                     <th>Dokumen</th>
                                     <th>PIC SE</th>
-                                    <th>ACTION</th>
+                                    @role(1, 3)
+                                        <th>ACTION</th>
+                                    @endrole
                                 </tr>
                             </thead>
                             <tbody id="collaborationsTable">
@@ -89,25 +91,27 @@
                                             @endif
                                         </td>
                                         <td>{{ $collaboration->pic_se }}</td>
-                                        <td>
-                                            <!-- Edit Icon -->
-                                            <a href="javascript:void(0);"
-                                                onclick="openEditCollaborationModal({{ $collaboration }})"
-                                                title="Edit">
-                                                <i data-feather="edit" class="text-primary"></i>
-                                            </a>
-                                            <!-- Delete Icon -->
-                                            <form action="{{ route('collaboration.destroy', $collaboration) }}"
-                                                method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you sure?')"
-                                                    title="Delete"
-                                                    style="border:none; background:none; cursor:pointer;">
-                                                    <i data-feather="trash-2" class="text-danger"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                                        @role(1, 3)
+                                            <td>
+                                                <!-- Edit Icon -->
+                                                <a href="javascript:void(0);"
+                                                    onclick="openEditCollaborationModal({{ $collaboration }})"
+                                                    title="Edit">
+                                                    <i data-feather="edit" class="text-primary"></i>
+                                                </a>
+                                                <!-- Delete Icon -->
+                                                <form action="{{ route('collaboration.destroy', $collaboration) }}"
+                                                    method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" onclick="return confirm('Are you sure?')"
+                                                        title="Delete"
+                                                        style="border:none; background:none; cursor:pointer;">
+                                                        <i data-feather="trash-2" class="text-danger"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        @endrole
                                     </tr>
                                 @endforeach
                             </tbody>

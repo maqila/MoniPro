@@ -4,9 +4,11 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title">Timeline</h4>
-                    <button class="btn btn-primary rounded-pill" data-bs-toggle="modal"
-                        data-bs-target="#createTimelineModal">Add
-                        Timeline</button>
+                    @role(1, 3)
+                        <button class="btn btn-primary rounded-pill" data-bs-toggle="modal"
+                            data-bs-target="#createTimelineModal">Add
+                            Timeline</button>
+                    @endrole
                 </div>
                 <div class="card-content">
                     <div class="px-3 pb-3">
@@ -61,7 +63,9 @@
                                     <th>Nama</th>
                                     <th>Contact</th>
                                     <th>Deadline</th>
-                                    <th>ACTION</th>
+                                    @role(1, 3)
+                                        <th>ACTION</th>
+                                    @endrole
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,8 +91,8 @@
                                                 {{ abs($timeline->days_remaining) }} days overdue
                                             @endif
                                         </td>
-                                        <td>
-                                            @role(1, 3)
+                                        @role(1, 3)
+                                            <td>
                                                 <!-- Edit Icon -->
                                                 <a href="javascript:void(0);"
                                                     onclick="openEditTimelineModal({{ $timeline }})" title="Edit">
@@ -112,8 +116,8 @@
                                                     title="Selesai">
                                                     <i data-feather="check-circle" class="text-success"></i>
                                                 </a>
-                                            @endrole
-                                        </td>
+                                            </td>
+                                        @endrole
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -133,7 +137,9 @@
                                     <th>Nama</th>
                                     <th>Contact</th>
                                     <th>Deadline</th>
-                                    <th>ACTION</th>
+                                    @role(1, 3)
+                                        <th>ACTION</th>
+                                    @endrole
                                 </tr>
                             </thead>
                             <tbody>
@@ -153,8 +159,8 @@
                                                 Done
                                             @endif
                                         </td>
-                                        <td>
-                                            @role(1, 3)
+                                        @role(1, 3)
+                                            <td>
                                                 <!-- Edit Icon -->
                                                 <a href="javascript:void(0);"
                                                     onclick="openEditTimelineModal({{ $timeline }})" title="Edit">
@@ -178,8 +184,8 @@
                                                     title="Selesai">
                                                     <i data-feather="check-circle" class="text-success"></i>
                                                 </a>
-                                            @endrole
-                                        </td>
+                                            </td>
+                                        @endrole
                                     </tr>
                                 @endforeach
                             </tbody>

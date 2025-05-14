@@ -7,10 +7,12 @@
                     <div>
                         <a href="{{ route('customer.index') }}"
                             class="btn btn-outline-secondary btn-sm rounded-pill">Back</a>
-                        <button class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal"
-                            data-bs-target="#createCollaborationModal">
-                            Add Collaboration
-                        </button>
+                        @role(1, 3)
+                            <button class="btn btn-primary btn-sm rounded-pill" data-bs-toggle="modal"
+                                data-bs-target="#createCollaborationModal">
+                                Add Collaboration
+                            </button>
+                        @endrole
                         @role(2, 3)
                             <a href="{{ route('customer.print', $customer->id) }}"
                                 class="btn btn-danger btn-sm rounded-pill">Cetak PDF</a>
@@ -87,7 +89,9 @@
                                     <th>Pengambilan Keputusan</th>
                                     <th>Status</th>
                                     <th>Dokumen</th>
-                                    <th>ACTION</th>
+                                    @role(1, 3)
+                                        <th>ACTION</th>
+                                    @endrole
                                 </tr>
                             </thead>
                             <tbody>
@@ -113,19 +117,21 @@
                                                 No Document
                                             @endif
                                         </td>
-                                        <td>
-                                            <!-- Delete Icon -->
-                                            <form action="{{ route('collaboration.destroy', $collaboration) }}"
-                                                method="POST" style="display:inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you sure?')"
-                                                    title="Delete"
-                                                    style="border:none; background:none; cursor:pointer;">
-                                                    <i data-feather="trash-2" class="text-danger"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                                        @role(1, 3)
+                                            <td>
+                                                <!-- Delete Icon -->
+                                                <form action="{{ route('collaboration.destroy', $collaboration) }}"
+                                                    method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" onclick="return confirm('Are you sure?')"
+                                                        title="Delete"
+                                                        style="border:none; background:none; cursor:pointer;">
+                                                        <i data-feather="trash-2" class="text-danger"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        @endrole
                                     </tr>
                                 @endforeach
                             </tbody>
